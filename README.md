@@ -16,6 +16,7 @@ This setup is used to create awscli client to access eks cluster.
 * [How to access existing EKS cluster ?](#eks)
 * [How to access Kubernetes Dashboard ?](#dashboard)
 * [How to create new EKS cluster ?](#create)
+* [How to Deploy the Kubernetes Web UI (Dashboard) ?](#deploy_dashbaord)
 * [How to delete EKS cluster ?](#delete)
 * [How to access Vagrant VM ?](#access)
 * [How to stop Vagrant VM ?](#stop)
@@ -75,24 +76,26 @@ awscli-eks  |172.17.8.101|CentOS 7|2G|2|
 <a id="eks"></a>
 ## How to access existing EKS Cluster ?
 
-* `cd awscli-eks-vagrant/provisioning` from bash terminal
-* `vagrant ssh awscli-eks`
-* `sudo su`
-* `aws configure`
+* `$ cd awscli-eks-vagrant/provisioning`
+* `$ vagrant ssh awscli-eks`
+* `$ sudo su`
+* `$ aws configure`
 *  `^^^^^^^^^^^^^ AWS Access Key ID [None]:`
 *  `^^^^^^^^^^^^^ AWS Secret Access Key [None]:`
 *  `^^^^^^^^^^^^^ Default region name [None]:`
 *  `^^^^^^^^^^^^^ Default output format [None]:`
-* `aws eks --region <region> update-kubeconfig --name <cluster_name>`
-* `kubectl proxy`
+* `$ aws eks --region <region> update-kubeconfig --name <cluster_name>`
+* `$ kubectl get nodes` [To verify kubectl is connected to eks cluster]
 
 <a id="eks"></a>
 ## How to access Kubernetes Dashboard ?
 Follow the steps [How to access EKS Cluster](#eks)
 From local system execute the below commands
-* `from bash terminal type  $ssh -L 8001:localhost:8001 root@172.17.8.101`
-* `enter password : awscli-eks`
-* `Go to browser and type URL`
+From bash terminal: 
+* `$ ssh -L 8001:localhost:8001 root@172.17.8.101`
+Enter password : ***awscli-eks***
+* `$ kubectl proxy`
+Go to browser and type URL
 [http://localhost:8001/api/v1/namespaces/kube-system/services/https:kubernetes-dashboard:/proxy/#!/login](http://localhost:8001/api/v1/namespaces/kube-system/services/https:kubernetes-dashboard:/proxy/#!/login)
 
 ![enter image description here](https://lh3.googleusercontent.com/YJE7IrWjWIt8B2JM23u13D0T_7V5ec_SB7BDNbOSCl_nbe5Ob_KHHpGQap6n684HHS8UNxBTkY0 "Watch the Video")
@@ -103,29 +106,34 @@ From local system execute the below commands
 <a id="create"></a>
 ## How to create new EKS Cluster ?
 
-* `cd awscli-eks-vagrant/provisioning` from bash terminal
-* `vagrant ssh awscli-eks`
-* `sudo su`
-* `aws configure`
+* `$ cd awscli-eks-vagrant/provisioning`
+* `$ vagrant ssh awscli-eks`
+* `$ sudo su`
+* `$ aws configure`
 *  `^^^^^^^^^^^^^ AWS Access Key ID [None]:`
 *  `^^^^^^^^^^^^^ AWS Secret Access Key [None]:`
 *  `^^^^^^^^^^^^^ Default region name [None]:`
 *  `^^^^^^^^^^^^^ Default output format [None]:`
-* `eksctl create cluster --version=1.11 --name=demo-cluster --region=us-east-2 --nodes-min=3 --nodes-max=5 --node-type=c4.xlarge --tags owner=demo`
+* `$ eksctl create cluster --version=1.11 --name=demo-cluster --region=us-east-1 --nodes-min=3 --nodes-max=5 --node-type=m4.xlarge --tags owner=demo`
 
+
+<a id="deploy_dashbaord"></a>
+## How to Deploy the Kubernetes Web UI (Dashboard) ?
+
+[https://docs.aws.amazon.com/eks/latest/userguide/dashboard-tutorial.html](https://docs.aws.amazon.com/eks/latest/userguide/dashboard-tutorial.html)
 
 <a id="delete"></a>
 ## How to delete existing EKS Cluster ?
 
-* `cd awscli-eks-vagrant/provisioning` from bash terminal
-* `vagrant ssh awscli-eks`
-* `sudo su`
-* `aws configure`
+* `$ cd awscli-eks-vagrant/provisioning`
+* `$ vagrant ssh awscli-eks`
+* `$ sudo su`
+* `$ aws configure`
 *  `^^^^^^^^^^^^^ AWS Access Key ID [None]:`
 *  `^^^^^^^^^^^^^ AWS Secret Access Key [None]:`
 *  `^^^^^^^^^^^^^ Default region name [None]:`
 *  `^^^^^^^^^^^^^ Default output format [None]:`
-* `eksctl delete cluster --name=demo-cluster --region=us-east-2
+* `$ eksctl delete cluster --name=demo-cluster --region=us-east-1`
 
 
 <a id="access"></a>
@@ -133,8 +141,8 @@ From local system execute the below commands
 The Vagrant VM can be accessed in two ways
 
 1) Login through vagrant ssh
-* `cd awscli-eks-vagrant/provisioning` from bash terminal
-* `vagrant ssh awscli-eks`
+* `$ cd awscli-eks-vagrant/provisioning`
+* `$ vagrant ssh awscli-eks`
 
 2) Login through putty
 * `172.17.8.101 [credentials : vagrant/vagrant (OR) root/awscli-eks]`
@@ -142,15 +150,15 @@ The Vagrant VM can be accessed in two ways
 
 <a id="stop"></a>
 ## How to stop Vagrant VM ?
-* `cd awscli-eks-vagrant/provisioning` from bash terminal
-* `vagrant halt`
+* `$ cd awscli-eks-vagrant/provisioning`
+* `$ vagrant halt`
 
 <a id="restart"></a>
 ## How to restart Vagrant VM ?
-* `cd awscli-eks-vagrant/provisioning` from bash terminal
-* `vagrant up`
+* `$ cd awscli-eks-vagrant/provisioning`
+* `$ vagrant up`
 
 <a id="destroy"></a>
 ## How to destroy Vagrant VM ?
-* `cd awscli-eks-vagrant/provisioning` from bash terminal
-* `vagrant destroy`
+* `$ cd awscli-eks-vagrant/provisioning`
+* `$ vagrant destroy`
