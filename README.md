@@ -1,5 +1,6 @@
 
 
+
 # awscli-eks
 
 ## About...
@@ -93,8 +94,10 @@ Follow the steps [How to access EKS Cluster](#eks)
 From local system execute the below commands
 From bash terminal: 
 * `$ ssh -L 8001:localhost:8001 root@172.17.8.101`
+
 Enter password : ***awscli-eks***
 * `$ kubectl proxy`
+
 Go to browser and type URL
 [http://localhost:8001/api/v1/namespaces/kube-system/services/https:kubernetes-dashboard:/proxy/#!/login](http://localhost:8001/api/v1/namespaces/kube-system/services/https:kubernetes-dashboard:/proxy/#!/login)
 
