@@ -97,7 +97,7 @@ From local system execute the below commands
 
 ![enter image description here](https://lh3.googleusercontent.com/YJE7IrWjWIt8B2JM23u13D0T_7V5ec_SB7BDNbOSCl_nbe5Ob_KHHpGQap6n684HHS8UNxBTkY0 "Watch the Video")
 
-[![Watch the video]](https://youtu.be/pGe1z5C-JYg)
+[![Watch the video to access Kubenetes Dashboard]](https://youtu.be/qvYew25_Dao)
 
 
 <a id="create"></a>
