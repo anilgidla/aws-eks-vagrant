@@ -1,6 +1,8 @@
 
 
 
+
+
 # awscli-eks
 
 ## About...
@@ -17,7 +19,7 @@ This setup is used to create awscli client to access eks cluster.
 * [How to access existing EKS cluster ?](#eks)
 * [How to access Kubernetes Dashboard ?](#dashboard)
 * [How to create new EKS cluster ?](#create)
-* [How to Deploy the Kubernetes Web UI (Dashboard) ?](#deploy_dashbaord)
+* [How to Deploy the Kubernetes Web UI (Dashboard) ?](#deploy_dashboard)
 * [How to delete EKS cluster ?](#delete)
 * [How to access Vagrant VM ?](#access)
 * [How to stop Vagrant VM ?](#stop)
@@ -44,7 +46,7 @@ This setup is used to create awscli client to access eks cluster.
 ```yaml
 VM:
   password: awscli-eks
-  ip: 172.17.8.101
+  ip: 100.10.10.108
   cpus: 2
   memory: 2048
   vmname: awscli-eks
@@ -65,12 +67,15 @@ VM:
 * `pip`
 * `helm`
 
+
+
 <a id="configuration"></a>
 ## What are the VM configuration details ?
 
 Name|IP|OS|RAM|CPU|
 |----|----|----|----|----|
-awscli-eks  |172.17.8.101|CentOS 7|2G|2|
+awscli-eks  |100.10.10.108|CentOS 7|2G|2|
+
 
 
 
@@ -93,7 +98,7 @@ awscli-eks  |172.17.8.101|CentOS 7|2G|2|
 Follow the steps [How to access EKS Cluster](#eks)
 From local system execute the below commands
 From bash terminal: 
-* `$ ssh -L 8001:localhost:8001 root@172.17.8.101`
+* `$ ssh -L 8001:localhost:8001 root@100.10.10.108`
 
 Enter password : ***awscli-eks***
 * `$ kubectl proxy`
@@ -120,8 +125,8 @@ Go to browser and type URL
 * `$ eksctl create cluster --version=1.11 --name=demo-cluster --region=us-east-1 --nodes-min=3 --nodes-max=5 --node-type=m4.xlarge --tags owner=demo`
 
 
-<a id="deploy_dashbaord"></a>
-## How to Deploy the Kubernetes Web UI (Dashboard) ?
+<a id="deploy_dashboard"></a>
+## How to Deploy Kubernetes Web UI (Dashboard) ?
 
 [https://docs.aws.amazon.com/eks/latest/userguide/dashboard-tutorial.html](https://docs.aws.amazon.com/eks/latest/userguide/dashboard-tutorial.html)
 
@@ -148,9 +153,11 @@ The Vagrant VM can be accessed in two ways
 * `$ vagrant ssh awscli-eks`
 
 2) Login through putty
-* `172.17.8.101 [credentials : vagrant/vagrant (OR) root/awscli-eks]`
-
-
+* `100.10.10.108` 
+    Username/Password:
+	***vagrant/vagrant***
+	***root/awscli-eks***
+	
 <a id="stop"></a>
 ## How to stop Vagrant VM ?
 * `$ cd awscli-eks-vagrant/provisioning`
