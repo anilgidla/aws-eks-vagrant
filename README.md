@@ -51,7 +51,7 @@ VM:
   vmname: awscli-eks
   hostname: awscli-eks.com
 ```
-By running the below command ***aws-cli*** to access ***Elastic Container Service*** cluster will be installed.
+By running the below command ***aws-cli*** will be installed to access ***Elastic Container Service***.
 
 * `vagrant up`
 
