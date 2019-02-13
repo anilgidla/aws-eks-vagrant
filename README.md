@@ -1,6 +1,6 @@
 
 
-# awscli-eks-vagrant
+# aws-eks-vagrant
 ![enter image description here](https://lh3.googleusercontent.com/m0rUXpTv3I-DZYhyNo5Xd5OOSuCydgkSk1QRyv8TUke0ijSP7pM71Ww1LlpBKyHHnR0jrLg1S-dNPg)
 
 ## About...
