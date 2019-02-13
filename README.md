@@ -1,15 +1,17 @@
+
 # awscli-eks-vagrant
 
 ## About...
 
-This setup is used to create all pre-requisites that are required to access/create/delete eks cluster.
+This setup is used to create ***pre-requisites*** that are required to ***access/create/delete***     
+***Elastic Container Service***.
 
 
 ## Table of Contents
 
 * [What are the pre-requisites ?](#pre-requisites)
-* [How to install AWSCLI ?](#deploy)
-* [What are the addons provided ?](#addons)
+* [How to install aws-cli?](#deploy)
+* [What are the add-ons provided ?](#addons)
 * [What are the VM configuration details ?](#configuration)
 * [How to access existing EKS cluster ?](#eks)
 * [How to access Kubernetes Dashboard ?](#access_dashboard)
@@ -22,8 +24,6 @@ This setup is used to create all pre-requisites that are required to access/crea
 * [How to destroy Vagrant VM ?](#destroy)
 
 
-
-
 <a id="pre-requisites"></a>
 ## What are the pre-Requisites ?
 * [Git](https://git-scm.com/downloads "Git")
@@ -33,11 +33,8 @@ This setup is used to create all pre-requisites that are required to access/crea
 * `Minimum laptop/desktop configuration  - 2GB RAM,2 CPU`
 
 
-
-
-
 <a id="deploy"></a>
-## How to install AWSCLI ?
+## How to install aws-cli?
 * Open `bash` terminal 
 * Checkout the code  (git clone https://github.com/SubhakarKotta/awscli-eks-vagrant.git) 
 * `cd awscli-eks-vagrant/provisioning` 
@@ -51,14 +48,13 @@ VM:
   vmname: awscli-eks
   hostname: awscli-eks.com
 ```
-    
-	By running the below command awscli with eks will be installed
+By running the below command ***aws-cli*** to access ***Elastic Container Service*** cluster will be installed.
+
 * `vagrant up`
 
 
-
 <a id="addons"></a>
-## What are the addons provided ?
+## What are the add-ons provided ?
 * `kubectl (1.11.5)`
 * `aws-iam-authenticator`
 * `aws`
@@ -67,16 +63,12 @@ VM:
 * `helm`
 
 
-
 <a id="configuration"></a>
 ## What are the VM configuration details ?
 
 Name|IP|OS|RAM|CPU|
 |----|----|----|----|----|
 awscli-eks  |100.10.10.108|CentOS 7|2G|2|
-
-
-
 
 
 <a id="eks"></a>
@@ -94,17 +86,12 @@ awscli-eks  |100.10.10.108|CentOS 7|2G|2|
 * `$ kubectl get nodes` [To verify kubectl is connected to eks cluster]
 
 
-
-
-
 <a id="access_dashboard"></a>
 ## How to access Kubernetes Dashboard ?
 Follow the steps [How to access EKS Cluster](#eks)
-From local system execute the below commands
-From bash terminal: 
-* `$ ssh -L 8001:localhost:8001 root@100.10.10.108`
 
-Enter password : ***awscli-eks***
+From ***local*** system execute the below commands
+* `$ ssh -L 8001:localhost:8001 root@100.10.10.108` [***password : awscli-eks***]
 * `$ kubectl proxy`
 
 Go to browser and type URL
@@ -126,18 +113,13 @@ Go to browser and type URL
 *  `^^^^^^^^^^^^^ AWS Secret Access Key [None]:`
 *  `^^^^^^^^^^^^^ Default region name [None]:`
 *  `^^^^^^^^^^^^^ Default output format [None]:`
-* `$ eksctl create cluster --version=1.11 --name=demo-cluster --region=us-east-1 --nodes-min=3 --nodes-max=5 --node-type=m4.xlarge --tags owner=demo`
-
-
-
+* `$ eksctl create cluster --version=1.11 --name=<YOUR_CLUSTER_NAME> --region=<YOUR_REGION_NAME> --nodes-min=<MIN_NODES> --nodes-max=<MAX_NODES> --node-type=m4.xlarge --tags owner=<YOUR_NAME>`
 
 
 <a id="deploy_dashboard"></a>
 ## How to Deploy Kubernetes Web UI (Dashboard) ?
 
 [https://docs.aws.amazon.com/eks/latest/userguide/dashboard-tutorial.html](https://docs.aws.amazon.com/eks/latest/userguide/dashboard-tutorial.html)
-
-
 
 
 <a id="delete"></a>
@@ -151,45 +133,31 @@ Go to browser and type URL
 *  `^^^^^^^^^^^^^ AWS Secret Access Key [None]:`
 *  `^^^^^^^^^^^^^ Default region name [None]:`
 *  `^^^^^^^^^^^^^ Default output format [None]:`
-* `$ eksctl delete cluster --name=demo-cluster --region=us-east-1`
-
-
-
+* `$ eksctl delete cluster --name=<YOUR_CLUSTER_NAME> --region=<YOUR_REGION_NAME>`
 
 
 <a id="access"></a>
 ## How to access Vagrant VM ?
 The Vagrant VM can be accessed in two ways
 
-1) Login through vagrant ssh
+***vagrant ssh***
 * `$ cd awscli-eks-vagrant/provisioning`
 * `$ vagrant ssh awscli-eks`
 
-2) Login through putty
-* `100.10.10.108`
-
-    Username/Password:
-	***vagrant/vagrant***
-	***root/awscli-eks***
+***putty***
+* `100.10.10.108` [***vagrant/vagrant***  (Or) ***root/awscli-eks***]
 	
-    
-    
-    
+          
 <a id="stop"></a>
 ## How to stop Vagrant VM ?
 * `$ cd awscli-eks-vagrant/provisioning`
 * `$ vagrant halt`
 
 
-
-
-
 <a id="restart"></a>
 ## How to restart Vagrant VM ?
 * `$ cd awscli-eks-vagrant/provisioning`
 * `$ vagrant up`
-
-
 
 
 <a id="destroy"></a>
