@@ -1,5 +1,6 @@
 
 
+
 # aws-eks-vagrant
 ![enter image description here](https://lh3.googleusercontent.com/m0rUXpTv3I-DZYhyNo5Xd5OOSuCydgkSk1QRyv8TUke0ijSP7pM71Ww1LlpBKyHHnR0jrLg1S-dNPg)
 
@@ -94,6 +95,9 @@ Follow the steps on [How to access EKS Cluster](#eks)
 From ***local*** system execute the below commands
 * `$ ssh -L 8001:localhost:8001 root@100.10.10.108` [***password : awscli-eks***]
 * `$ kubectl proxy`
+
+Use the below command to generate ***access token*** to login to ***Dashboard***
+* `$ kubectl -n kube-system describe secret $(kubectl -n kube-system get secret | grep eks-admin | awk '{print $1}')`
 
 Click !
 [http://localhost:8001/api/v1/namespaces/kube-system/services/https:kubernetes-dashboard:/proxy/#!/login](http://localhost:8001/api/v1/namespaces/kube-system/services/https:kubernetes-dashboard:/proxy/#!/login)
