@@ -1,5 +1,7 @@
 
+
 # awscli-eks-vagrant
+![enter image description here](https://lh3.googleusercontent.com/m0rUXpTv3I-DZYhyNo5Xd5OOSuCydgkSk1QRyv8TUke0ijSP7pM71Ww1LlpBKyHHnR0jrLg1S-dNPg)
 
 ## About...
 
@@ -13,7 +15,7 @@ This setup is used to create ***pre-requisites*** that are required to ***access
 * [How to install aws-cli?](#deploy)
 * [What are the add-ons provided ?](#addons)
 * [What are the VM configuration details ?](#configuration)
-* [How to access existing EKS cluster ?](#eks)
+* [How to access EKS cluster ?](#eks)
 * [How to access Kubernetes Dashboard ?](#access_dashboard)
 * [How to create new EKS cluster ?](#create)
 * [How to Deploy the Kubernetes Web UI (Dashboard) ?](#deploy_dashboard)
@@ -72,7 +74,7 @@ awscli-eks  |100.10.10.108|CentOS 7|2G|2|
 
 
 <a id="eks"></a>
-## How to access existing EKS Cluster ?
+## How to access EKS Cluster ?
 
 * `$ cd awscli-eks-vagrant/provisioning`
 * `$ vagrant ssh awscli-eks`
@@ -83,18 +85,17 @@ awscli-eks  |100.10.10.108|CentOS 7|2G|2|
 *  `^^^^^^^^^^^^^ Default region name [None]:`
 *  `^^^^^^^^^^^^^ Default output format [None]:`
 * `$ aws eks --region <region> update-kubeconfig --name <cluster_name>`
-* `$ kubectl get nodes` [To verify kubectl is connected to eks cluster]
+* `$ kubectl get nodes` [Verify ***kubectl*** is connected to eks cluster]
 
 
 <a id="access_dashboard"></a>
 ## How to access Kubernetes Dashboard ?
-Follow the steps [How to access EKS Cluster](#eks)
-
+Follow the steps on [How to access EKS Cluster](#eks)
 From ***local*** system execute the below commands
 * `$ ssh -L 8001:localhost:8001 root@100.10.10.108` [***password : awscli-eks***]
 * `$ kubectl proxy`
 
-Go to browser and type URL
+Click !
 [http://localhost:8001/api/v1/namespaces/kube-system/services/https:kubernetes-dashboard:/proxy/#!/login](http://localhost:8001/api/v1/namespaces/kube-system/services/https:kubernetes-dashboard:/proxy/#!/login)
 
 ![enter image description here](https://lh3.googleusercontent.com/YJE7IrWjWIt8B2JM23u13D0T_7V5ec_SB7BDNbOSCl_nbe5Ob_KHHpGQap6n684HHS8UNxBTkY0 "Watch the Video")
@@ -145,7 +146,7 @@ The Vagrant VM can be accessed in two ways
 * `$ vagrant ssh awscli-eks`
 
 ***putty***
-* `100.10.10.108` [***vagrant/vagrant***  (Or) ***root/awscli-eks***]
+* `100.10.10.108` [***vagrant/vagrant***  ***(Or)*** ***root/awscli-eks***]
 	
           
 <a id="stop"></a>
